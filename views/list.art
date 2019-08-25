@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学员信息</title>
+	<link rel="stylesheet" href="/css/list.css">
+</head>
+<body>
+	<table>
+		<caption>学员信息<small><a style="color: green; margin-left: 20px;" href="/add">添加用户</a></small></caption>
+		<tr>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>性别</th>
+			<th>邮箱地址</th>
+			<th>爱好</th>
+			<th>所属学院</th>
+			<th>入学时间</th>
+		</tr>
+		{{each users}}
+		<tr>
+			<td>{{$value.username}}</td>
+			<td>{{$value.age}}</td>
+			<td>{{$value.sex == 0 ? '男' : '女'}}</td>
+			<td>{{$value.email}}</td>
+			<td>{{$value.hobbies.join()}}</td>
+			<td>{{$value.collage}}</td>
+			<td>{{dateFormat($value.enterDate, 'yyyy-mm-dd')}}</td>
+		</tr>
+		{{/each}}
+	</table>
+</body>
+</html>
